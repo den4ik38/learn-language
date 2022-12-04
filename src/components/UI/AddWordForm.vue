@@ -48,8 +48,8 @@
       <input name="word-id" disabled v-model="id" type="text">
     </div>
     <div class="form__control">
-      <input type="reset" class="form__btns">
-      <input @click.prevent="logResult" type="submit" class="form__btns">
+      <my-button type="reset" class="form__btns">Сбросить</my-button>
+      <my-button @click.prevent="logResult" type="submit" class="form__btns">Отправить</my-button>
     </div>
   </form>
 </template>

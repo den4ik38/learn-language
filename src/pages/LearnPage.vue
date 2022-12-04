@@ -12,18 +12,15 @@
       Поздравляем!!!<br> Вы ознакомились со всеми карточками на текущий момент <br> Переходите к тестам
     </div>
   </div>
-  <my-footer/>
 </template>
 
 <script>
 
 import TicketList from '@/components/TicketList.vue'
-import MyFooter from '@/components/MyFooter.vue';
 
   export default {
     components: {
       TicketList,
-      MyFooter
     },
     data() {
       return {

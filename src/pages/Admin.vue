@@ -16,7 +16,7 @@
             <option value="all">Найти всех пользователей</option>
           </select>
           <input v-model="userSearchRow" type="text" :disabled="(userFindOption === 'all' || userFindOption === '')" placeholder="Веедите искомый id или mail" class="users__find-form-input">
-          <button @click.stop="findUsers(userFindOption)" class="users__finf-form-btn">Найти</button>
+          <my-button @click.stop="findUsers(userFindOption)" class="users__finf-form-btn">Найти</my-button>
         </div>
         <div v-for="user in users" :key="user.id" class="users__item">
           <div class="user__container">
@@ -34,7 +34,7 @@
       <div class="redactor" v-if="isActive === 3">
         <div class="redactor__find-word">
           <input v-model="searchRow" name="redactor-input" type="text" class="redactor__input" placeholder="Введите искомое слово">
-          <button @click="searchString" :disabled="(searchRow === '')" class="redactor__find-btn">Найти</button>
+          <my-button @click="searchString" :disabled="(searchRow === '')" class="redactor__find-btn">Найти</my-button>
         </div>
         <div v-if="redactedWords.length > 0" class="redactor__find-result">
           <div @click="edit($event)" v-for="word in redactedWords" :key="word.id" class="redactor__find-words">{{word.word}}
@@ -44,18 +44,16 @@
       </div>
     </div>
   </div>
-  <my-footer/>
 </template>
 <script>
 import AddWordForm from '@/components/UI/AddWordForm.vue'
 import UserForm from '@/components/UserForm.vue';
-import MyFooter from '@/components/MyFooter.vue';
 import {useCards} from '@/hooks/useCards'
 import {useUsers} from '@/hooks/useUsers'
 
 
 export default {
-  components: { AddWordForm, UserForm, MyFooter },
+  components: { AddWordForm, UserForm },
   data() {
     return {
       isActive: 1,
@@ -107,6 +105,7 @@ export default {
   .left-menu {
     min-width: 300px;
     border-right: 1px solid grey;
+    padding-top: 20px;
   }
   .menu-item {
     margin-left: 10px;
@@ -124,6 +123,7 @@ export default {
   .content {
     padding-left: 20px;
     width: 100%;
+    padding-top: 20px;
   }
   .users__find-form {
     width: 100%;

@@ -43,7 +43,7 @@
         <div class="redactor__find-word">
           <div class="redactor__title">Шаг 1. Выберите слова, которые хотите дать в качестве задания. Для поиска введите слово на английском языке, после чего нажмите кнопку "Найти"</div>
           <input v-model="searchRow" name="redactor-input" type="text" class="redactor__input" placeholder="Введите искомое слово">
-          <button @click="searchString" class="redactor__find-btn">Найти</button>
+          <my-button @click="searchString" class="redactor__find-btn">Найти</my-button>
         </div>
         <div v-if="redactedWords.length > 0" class="redactor__find-result">
           <div class="redactor__title">Шаг 2. Здесь будут показаны все слова, содержащие поисковую строку. При помощи клика на слово, выберите желаемое слово.</div>
@@ -66,23 +66,20 @@
             <div v-for="man in destinations" :key="man.id" class="destinations__item">{{man.name}} {{man.nickName}} <span @click="delForDestinations(man.id)" class="del__btn">х</span></div>
           </div>
         </div>
-          <button v-if="destinations.length > 0" @click="sendExercise" class="send-btn">Отправить</button>
+          <my-button v-if="destinations.length > 0" @click="sendExercise" class="send-btn">Отправить</my-button>
       </div>
     </div>
     <my-dialog :show="myDialogVisible" >Задание сформировано и отправлено</my-dialog>
   </div>
-  <my-footer/>
 </template>
 <script>
 import MyDialog from '@/components/UI/MyDialog';
-import MyFooter from '@/components/MyFooter.vue';
 import {useCards} from '@/hooks/useCards'
 import {useUsers} from '@/hooks/useUsers'
 
 export default {
   components: {
     MyDialog,
-    MyFooter
   },
   data() {
     return {

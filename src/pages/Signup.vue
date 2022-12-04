@@ -23,34 +23,35 @@
           <label for="password">Продублируйте пароль</label>
           <input type="password" name="password" class="password" placeholder="пароль должен быть не короче 6 символов">
         </div>
-        <button class="form__btn" @click.prevent>Регистрация</button>
+        <my-button class="form__btn" @click.prevent>Регистрация</my-button>
       </div>
       <div class="footer"><router-link class="form__router-link" to="/login">Уже есть аккаунт</router-link></div>
     </form>
   </div>
-  <my-footer/>
 </template>
 <script>
-import MyFooter from '@/components/MyFooter.vue';
 
 export default {
-  components: {MyFooter}
 }
 </script>
 <style scoped>
 .wrapper {
   min-height: calc(100vh - 140px);
+  background-color: #c0c0c0;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
   .auth-form {
     max-width: 400px;
     min-height: 300px;
-    margin: 30px auto;
+    margin: 0 auto;
     border-radius: 15px;
     box-shadow: 0 0 7px grey;
     overflow: hidden;
     justify-content: space-between;
     display: flex;
     flex-direction: column;
+    background-color: white;
   }
   .header {
     color: white;

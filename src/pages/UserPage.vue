@@ -3,15 +3,13 @@
     <user-form
     />
   </div>
-  <my-footer/>
 </template>
 
 <script>
 import UserForm from '@/components/UserForm.vue';
-import MyFooter from '@/components/MyFooter.vue';
 
   export default {
-  components: { UserForm, MyFooter }
+  components: { UserForm }
 }
 </script>
 

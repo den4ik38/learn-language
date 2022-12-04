@@ -1,25 +1,23 @@
 <template>
   <div class="wrapper">
     <div v-if="$store.state.user.exercise.length === 0" class="btn__wrapper">
-      <button @click="changeStep(1)" class="btn__wrapper_item">1 Раунд</button>
-      <button :disabled="($store.state.user.step2.length < 10)" @click="changeStep(2)" class="btn__wrapper_item">2 Раунд</button>
-      <button :disabled="($store.state.user.step3.length < 10)" @click="changeStep(3)" class="btn__wrapper_item">3 Раунд</button>
-      <button :disabled="($store.state.user.step4.length < 10)" @click="changeStep(4)" class="btn__wrapper_item">4 Раунд</button>
-      <button @click="changeStep(9)" class="btn__wrapper_item">Экзамен</button>
+      <my-button @click="changeStep(1)" class="btn__wrapper_item">1 Раунд</my-button>
+      <my-button :disab="($store.state.user.step2.length < 10)" @click="changeStep(2)" class="btn__wrapper_item">2 Раунд</my-button>
+      <my-button :disab="($store.state.user.step3.length < 10)" @click="changeStep(3)" class="btn__wrapper_item">3 Раунд</my-button>
+      <my-button :disab="($store.state.user.step4.length < 10)" @click="changeStep(4)" class="btn__wrapper_item">4 Раунд</my-button>
+      <my-button @click="changeStep(9)" class="btn__wrapper_item">Экзамен</my-button>
     </div>
     <div>
       <test-list :cards="cards" @loadMoreCards="addCards" :reloadCards="reloadCards"/>
     </div>
   </div>
-  <my-footer/>
 </template>
 
 <script>
 import TestList from '@/components/TestList.vue'
-import MyFooter from '@/components/MyFooter.vue';
 
   export default {
-  components: { TestList, MyFooter },
+  components: { TestList },
   data() {
     return {
       cards: [],
@@ -150,6 +148,8 @@ import MyFooter from '@/components/MyFooter.vue';
     }
   }, 
   beforeMount() {
+  },
+  mounted() {
     if (this.$store.state.user.exercise.length > 0) {
           this.loadCards(this.page)
           this.$store.commit('user/setActiveStep', this.$store.state.user.exercise[0].step)
@@ -164,8 +164,6 @@ import MyFooter from '@/components/MyFooter.vue';
         this.cards = this.$store.state.cards.cards
       }
     this.pushRandomizeCaseAnswer()
-  },
-  mounted() {
     this.changeStep(1)
   }
 }

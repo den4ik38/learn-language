@@ -72,26 +72,26 @@
             <p class="card__word_text" @click="toogleCheckbox">Я знаю это слово</p>
           </div>
           <div class="card__control_btns">
-              <button class="card__next" :disabled="!disabledButton" @click.stop="nextCard">Далее >></button>
+              <my-button class="card__next" :disab="!disabledButton" @click.stop="nextCard">Далее >></my-button>
           </div>
         </div>
         <div class="card__test_section">
           <div class="card__options_sections">
             <div class="card__option_container">
-              <button class="card__options" :disabled="disabledButton" @click.stop="checkAnswer">{{card.variants[0].word}}</button>
+              <my-button class="card__options" :disab="disabledButton" @click.stop="checkAnswer">{{card.variants[0].word}}</my-button>
               <div v-if="this.$store.state.user.activeStep !== 4" class="card__option_picture" :style="card.variants[0].image"></div>
             </div>
             <div class="card__option_container">
-              <button class="card__options" :disabled="disabledButton" @click.stop="checkAnswer">{{card.variants[1].word}}</button>
+              <my-button class="card__options" :disab="disabledButton" @click.stop="checkAnswer">{{card.variants[1].word}}</my-button>
               <div v-if="this.$store.state.user.activeStep !== 4" class="card__option_picture" :style="card.variants[1].image"></div>
             </div>
-            <button class="show-ticket" v-if="showTicketButton" @click="showDialog">Показать правильный ответ</button>
+            <my-button class="show-ticket" v-if="showTicketButton" @click="showDialog">Показать правильный ответ</my-button>
             <div class="card__option_container">
-              <button class="card__options" :disabled="disabledButton" @click.stop="checkAnswer">{{card.variants[2].word}}</button>
+              <my-button class="card__options" :disab="disabledButton" @click.stop="checkAnswer">{{card.variants[2].word}}</my-button>
               <div v-if="this.$store.state.user.activeStep !== 4" class="card__option_picture" :style="card.variants[2].image"></div>
             </div>
             <div class="card__option_container">
-              <button class="card__options" :disabled="disabledButton" @click.stop="checkAnswer">{{card.variants[3].word}}</button>
+              <my-button class="card__options" :disab="disabledButton" @click.stop="checkAnswer">{{card.variants[3].word}}</my-button>
               <div v-if="this.$store.state.user.activeStep !== 4" class="card__option_picture" :style="card.variants[3].image"></div>
             </div>
           </div>
@@ -138,6 +138,7 @@ export default {
       this.belongNotes = true
     },
     checkAnswer(event) {
+      const cardBody = document.querySelector('.card__wrapper')
       if (this.card.translate === event.target.textContent) {
         if(this.$refs.iknowCheck && this.$refs.iknowCheck.checked && this.$store.state.user.exercise.length<1) {
           this.$store.commit('user/acceptAnswerStep4', this.card.id)
@@ -160,13 +161,13 @@ export default {
         if (this.$store.state.user.exercise.length>0) {
           this.$emit('excerciseCounter')
         }
-        event.target.classList.add('correct')
+        cardBody.classList.add('correct')
         this.disabledButton = true
         if (this.$store.state.user.exam.enabled === true) {
           this.$store.commit('user/setExamCounter')
         }
       } else {
-        event.target.classList.add('incorrect')
+        cardBody.classList.add('incorrect')
         this.disabledButton = true
         this.showTicketButton = true
         if (this.$store.state.user.exam.enabled === true) {
@@ -358,10 +359,10 @@ export default {
     box-shadow: none;
   }
   .correct {
-    background: greenyellow;
+    background-image: linear-gradient(#3b7b2b, white 60%);
   }
   .incorrect {
-    background: darkred;
+    background-image: linear-gradient(red, white 60%);
   }
   .colornotes__row {
     display: flex;

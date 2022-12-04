@@ -29,7 +29,7 @@
             <p class="card__word_text" @click="toogleCheckbox">Я знаю это слово</p>
           </div>
           <div class="card__control_btns">
-              <button class="card__next" @click="nextTicket">Запомнил >></button>
+              <my-button class="card__next" @click="nextTicket">Запомнил >></my-button>
           </div>
         </div>
       </div>

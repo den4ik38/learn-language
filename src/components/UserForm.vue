@@ -19,7 +19,7 @@
     </div>
     <div class="info-block">
       <div class="name__block-info">Пароль входа</div>
-      <div class="value__block-info"><button class="change-password__btn">Изменить пароль</button></div>
+      <div class="value__block-info"><my-button class="change-password__btn">Изменить пароль</my-button></div>
     </div>
     <div class="info-block">
       <div class="name__block-info">Дата регистрации</div>
@@ -30,8 +30,8 @@
       <div v-for="sensei in $store.state.user.senseis" :key="sensei.id" class="value__block-info value__block-info_flex">
         <div class="continer-for-teacher">
           <div class="request__info-block" style="font-weight:bold">{{sensei.nickName}}</div>
-          <button v-if="!sensei.confirmSensei" @click="confirmSensei(sensei.id)" class="request__info-block-btn">подтвердить наставника</button>
-          <button v-else class="request__info-block-btn">Удалить наставника</button>
+          <my-button v-if="!sensei.confirmSensei" @click="confirmSensei(sensei.id)" class="request__info-block-btn">подтвердить наставника</my-button>
+          <my-button v-else class="request__info-block-btn">Удалить наставника</my-button>
         </div>
       </div>
     </div>
@@ -42,13 +42,13 @@
           <div v-for="child in $store.state.user.childs" style="display: flex; flex-direction:column" class="childs-item">
             <div class="childs-item__row" style="text-align: center; font-weight: bold;">{{child.id}}</div>
             <div class="childs-item__row" style="text-align: center; font-weight: bold;">{{child.nickName}}</div>
-            <button v-if="child.confirmChild" class="request__info-block-btn">Отписаться от ученика</button>
-            <button v-else disabled style="box-shadow: none;" class="request__info-block-btn">Ожидает подтверждения</button>
+            <my-button v-if="child.confirmChild" class="request__info-block-btn">Отписаться от ученика</my-button>
+            <my-button v-else disab="true" style="box-shadow: none;" class="request__info-block-btn">Ожидает подтверждения</my-button>
           </div>
         </div>
         <hr>
         <input type="text" class="request__info-block" placeholder="Введите id подопечного аккаунта">
-        <button class="request__info-block-btn">Запросить подтверждение</button>
+        <my-button class="request__info-block-btn">Запросить подтверждение</my-button>
       </div>
     </div>
     <div class="progress-info">
@@ -143,6 +143,16 @@ export default {
   .name__block-info {
     margin: 10px 15px;
     width: 30%;
+  }
+  .childs-container {
+    display: flex;
+  }
+  .childs-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: fit-content;
+    align-items: center;
   }
   .value__block-info {
     margin: 10px 15px;
