@@ -11,7 +11,7 @@
       <img @click="listenSound" src="@/../public/images/speaker-filled-audio-tool.png" alt="" class="sound-img">
       <div class="sound-path">{{sound}}</div>
     </div>
-    <input class="input-file" type="file" ref="soundFile" name="sound" placeholder="Добавьте файл с произношением">
+    <input class="input-file" type="file" ref="soundFile" name="sound" accept="audio/mpeg" placeholder="Добавьте файл с произношением">
     <label for="mnemoText">5. Напишите текст для запоминания, постарайтесь сделать ее более ярким и запоминающимся:</label>
     <textarea v-model="mnemoText" name="mnemoText" placeholder="Сюда впишите мнемотекст для запоминания"></textarea>
     <label for="picture">6. Скачайте картинку, а после добавьте его, кликнув по кнопке ниже</label>
@@ -20,7 +20,7 @@
       <div class="img" :style="picture"></div>
       <img ref="imgPicture" class="img" src="">
     </div>
-    <input class="input-file" @input="changeImage($event)" type="file" ref="imageFile" name="picture" placeholder="добавьте изображение">
+    <input class="input-file" @input="changeImage($event)" type="file" ref="imageFile" name="picture" accept="image/gif, image/jpeg, image/jpg, image/png, image/webp" placeholder="добавьте изображение">
     <label for="category">7. Выберите категорийную принадлежность слова, кликнув по выпадающему списку ниже:</label>
     <select name="category" required v-model="category">
       <option selected disabled>Выберите категорию</option>
@@ -48,10 +48,14 @@
       <input name="word-id" disabled v-model="id" type="text">
     </div>
     <div class="form__control">
-      <my-button type="reset" class="form__btns">Сбросить</my-button>
-      <my-button @click.prevent="logResult" type="submit" class="form__btns">Отправить</my-button>
+      <my-button @click="resetForm" type="reset" class="form__btns">Сбросить</my-button>
+      <my-button :disab="checkForm" @click.prevent="logResult() ,accessSend()" type="submit" class="form__btns">Отправить</my-button>
     </div>
   </form>
+  <my-dialog :show="dialogVisible">
+    <p v-if="!redMode">Новое слово успешно добавлено!</p>
+    <p v-else>Слово {{word}} успешно обновлено</p>
+  </my-dialog>
 </template>
 <script>
 export default {
@@ -65,6 +69,7 @@ export default {
   },
   data() {
     return {
+      dialogVisible: false,
       word: '',
       transcrip: '',
       translate: '',
@@ -77,9 +82,33 @@ export default {
     }
   },
   methods: {
+    accessSend() {
+      this.dialogVisible =true
+      setTimeout(()=>{
+        this.dialogVisible=false
+        if (this.redMode) {
+        this.$emit('clearRedactList')
+        }
+      }, 3000)
+      this.resetForm()
+    },
+    resetForm() {
+      this.word= ''
+      this.transcrip= ''
+      this.translate= ''
+      this.mnemoText= ''
+      this.category= ''
+      this.belong= ''
+      this.sound= ''
+      this.picture= ''
+    },
     logResult() {
-      this.sound = this.$refs.soundFile.files[0].name
-      this.picture = this.$refs.imageFile.files[0].name
+      if (this.sound === '') {
+        this.sound = this.$refs.soundFile.files[0].name
+      }
+      if (this.picture === '') {
+        this.picture = this.$refs.imageFile.files[0].name
+      }
       console.log(this.word, this.transcrip, this.translate, this.picture, this.mnemoText, this.category, this.belong, this.sound);
     },
     setSelectedValue(selectObj, valueToSet) {
@@ -102,10 +131,37 @@ export default {
       audio.autoplay = true
     },
     changeImage(event) {
-      const [file] = event.target.files
+      if (this.redMode) {
+        const [file] = event.target.files
         if (file) {
         this.$refs.imgPicture.src = URL.createObjectURL(file)
         }
+      }
+    }
+  },
+  computed: {
+    checkForm() {
+      if (!this.redMode){
+        if (this.word === '' ||
+        this.transcrip === '' ||
+        this.translate === '' ||
+        this.mnemoText === '' ||
+        this.category === '' ||
+        this.belong === '' ||
+        !this.$refs.soundFile.files[0] ||
+        !this.$refs.imageFile.files[0]) {
+          return true
+        } else {return false}
+      } else {
+        if (this.word === '' ||
+        this.transcrip === '' ||
+        this.translate === '' ||
+        this.mnemoText === '' ||
+        this.category === '' ||
+        this.belong === '') {
+          return true
+        } else {return false}
+      }
     }
   },
   beforeMount() {

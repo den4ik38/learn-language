@@ -3,9 +3,9 @@
     <div class="first-setion">
       <div class="first-line">
         <ul class="first-line__linked-list">
-          <li class="first-line__link-item"> <a href="" class="first-line__link">Как правильно работать с карточками</a> </li>
-          <li class="first-line__link-item"> <a href="" class="first-line__link">Как проходить тесты</a> </li>
-          <li class="first-line__link-item"> <a href="" class="first-line__link">Родителям, репетиторам и учителям</a> </li>
+          <li class="first-line__link-item"> <a href="#second" class="first-line__link">Как правильно работать с карточками</a> </li>
+          <li class="first-line__link-item"> <a href="#third" class="first-line__link">Как проходить тесты</a> </li>
+          <li class="first-line__link-item"> <a href="#fourth" class="first-line__link">Родителям, репетиторам и учителям</a> </li>
         </ul>
       </div>
       <div class="second-line">

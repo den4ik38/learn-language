@@ -28,18 +28,18 @@
         <span class="logo-name">LEARN LANGUAGE</span>
       </div>
       <div class="hamburger-menu">
-        <input id="menu-toggle" type="checkbox">
+        <input ref="checkBoxMenu" id="menu-toggle" type="checkbox">
         <label class='menu-button-container' for="menu-toggle">
           <div class='menu-button'></div>
         </label>
         <ul class="menu">
-          <li> <router-link class="nav__link" v-if="!$store.state.user.isAuth"  to="/login">Авторизация/Регистрация</router-link> <router-link v-if="$store.state.user.isAuth" to="/user-page" class="nav__link">{{$store.state.user.nickName}}</router-link> </li>
-          <li> <router-link class="mobile-link" to="/" >Главная</router-link> </li>
-          <li> <router-link class="mobile-link" to="/how-to-use" >Как пользоваться</router-link> </li>
-          <li> <router-link class="mobile-link" to="/learn-page" >Учить</router-link> </li>
-          <li> <router-link class="mobile-link" to="/test-page" >Тесты</router-link> </li>
-          <li> <router-link class="mobile-link" to="/teacher-room" >Учительская</router-link> </li>
-          <li v-if="($store.state.user.role === 'admin' || $store.state.user.role === 'moderator') && $store.state.user.isAuth"> <router-link class="mobile-link" to="/admin" >Админка</router-link> </li>
+          <li> <router-link @click="closeMenu" class="nav__link" v-if="!$store.state.user.isAuth"  to="/login">Авторизация/Регистрация</router-link> <router-link @click="closeMenu" v-if="$store.state.user.isAuth" to="/user-page" class="nav__link">{{$store.state.user.nickName}}</router-link> </li>
+          <li> <router-link @click="closeMenu" class="mobile-link" to="/" >Главная</router-link> </li>
+          <li> <router-link @click="closeMenu" class="mobile-link" to="/how-to-use" >Как пользоваться</router-link> </li>
+          <li> <router-link @click="closeMenu" class="mobile-link" to="/learn-page" >Учить</router-link> </li>
+          <li> <router-link @click="closeMenu" class="mobile-link" to="/test-page" >Тесты</router-link> </li>
+          <li> <router-link @click="closeMenu" class="mobile-link" to="/teacher-room" >Учительская</router-link> </li>
+          <li v-if="($store.state.user.role === 'admin' || $store.state.user.role === 'moderator') && $store.state.user.isAuth"> <router-link @click="closeMenu" class="mobile-link" to="/admin" >Админка</router-link> </li>
         </ul>
       </div>
     </div>
@@ -51,6 +51,11 @@ import Navigation from '@/components/Navigation.vue'
 export default {
   components: {
     Navigation
+  },
+  methods: {
+    closeMenu() {
+      this.$refs.checkBoxMenu.checked = false
+    }
   }
 }
 </script>

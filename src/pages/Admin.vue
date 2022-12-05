@@ -40,7 +40,7 @@
           <div @click="edit($event)" v-for="word in redactedWords" :key="word.id" class="redactor__find-words">{{word.word}}
           </div>
         </div>
-        <add-word-form v-for="edit in editedWord" :key="edit.id" :redMode="true" :worder="editedWord[0]"/>
+        <add-word-form @clearRedactList="(editedWord = [])" v-for="edit in editedWord" :key="edit.id" :redMode="true" :worder="editedWord[0]"/>
       </div>
     </div>
   </div>

@@ -190,5 +190,8 @@ import TestList from '@/components/TestList.vue'
       display: flex;
       flex-wrap: wrap;
     }
+    .btn__wrapper_item {
+      margin-top: 10px;
+    }
   }
 </style>

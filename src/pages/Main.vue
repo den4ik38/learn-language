@@ -3,9 +3,9 @@
     <div class="first-setion">
       <div class="first-line">
         <ul class="first-line__linked-list">
-          <li class="first-line__link-item"> <a href="" class="first-line__link">Запоминаем правильно</a> </li>
-          <li class="first-line__link-item"> <a href="" class="first-line__link">Тесты</a> </li>
-          <li class="first-line__link-item"> <a href="" class="first-line__link">Родителям & наставникам</a> </li>
+          <li class="first-line__link-item"><router-link class="first-line__link" to="/how-to-use#second" >Запоминаем правильно</router-link> </li>
+          <li class="first-line__link-item"><router-link class="first-line__link" to="/how-to-use#third" >Тесты</router-link> </li>
+          <li class="first-line__link-item"><router-link class="first-line__link" to="/how-to-use#fourth" >Родителям & наставникам</router-link> </li>
         </ul>
       </div>
       <div class="second-line">
