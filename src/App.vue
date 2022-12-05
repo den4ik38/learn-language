@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
-    <my-header class="header"/>
-    <router-view></router-view>
+    <my-header class="app-header"/>
+    <router-view class="view"></router-view>
     <my-footer/>
   </div>
 </template>
@@ -17,7 +17,7 @@
     },
     methods: {
         onScrollHeader() {
-          const header = document.querySelector('.header')
+          const header = document.querySelector('.app-header')
           let prevScroll = window.pageYOffset
           let currentScroll
           window.addEventListener('scroll', () => {
@@ -50,7 +50,10 @@
     font-family: 'Comic Sans MS', cursive, sans-serif;
     scroll-behavior: smooth;
   }
-  .header {
+  .view {
+    min-height: calc(100vh - 210px);
+  }
+  .app-header {
     position: sticky;
     top: 0;
     transition: 1s;

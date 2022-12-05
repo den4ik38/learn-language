@@ -36,7 +36,7 @@ export default {
 </script>
 <style scoped>
 .wrapper {
-  min-height: calc(100vh - 140px);
+
   background-color: #c0c0c0;
   padding-top: 30px;
   padding-bottom: 30px;

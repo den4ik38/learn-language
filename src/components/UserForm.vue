@@ -27,13 +27,16 @@
     </div>
     <div class="info-block">
       <div class="name__block-info">Наставники</div>
-      <div v-for="sensei in $store.state.user.senseis" :key="sensei.id" class="value__block-info value__block-info_flex">
-        <div class="continer-for-teacher">
-          <div class="request__info-block" style="font-weight:bold">{{sensei.nickName}}</div>
-          <my-button v-if="!sensei.confirmSensei" @click="confirmSensei(sensei.id)" class="request__info-block-btn">подтвердить наставника</my-button>
-          <my-button v-else class="request__info-block-btn">Удалить наставника</my-button>
+      <div class="value__block-info sensei-block">
+        <div v-for="sensei in $store.state.user.senseis" :key="sensei.id" class="">
+          <div class="continer-for-teacher">
+            <div class="request__info-block" style="font-weight:bold">{{sensei.nickName}}</div>
+            <my-button v-if="!sensei.confirmSensei" @click="confirmSensei(sensei.id)" class="request__info-block-btn">подтвердить наставника</my-button>
+            <my-button v-else class="request__info-block-btn">Удалить наставника</my-button>
+          </div>
         </div>
       </div>
+      
     </div>
     <div class="info-block">
       <div class="name__block-info">Подопечные  аккаунты</div>
@@ -146,6 +149,8 @@ export default {
   }
   .childs-container {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   .childs-item {
     display: flex;
@@ -156,7 +161,11 @@ export default {
   }
   .value__block-info {
     margin: 10px 15px;
-    width: 60%;
+    display: flex;
+  }
+  .sensei-block {
+    flex-wrap: wrap;
+    justify-content: center;
   }
   .value__block-info_flex {
     display: flex;
@@ -210,7 +219,7 @@ export default {
     width: 30%;
   }
   .value {
-    width: 30%;
+    padding-left: 20px;
   }
   
 </style>

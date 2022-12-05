@@ -398,7 +398,7 @@ export default {
     display: block;
     animation: animrightx 1s forwards;
   }
-  @media screen and (max-width: 769px) {
+  @media screen and (max-width: 850px) {
     .steps__items {
       grid-gap: 8.25rem;
       grid-template-columns: 1fr;
@@ -429,6 +429,40 @@ export default {
       display: none;
     }
   }
+  @media screen and (max-width: 800px) {
+    .info-container {
+      flex-direction: column;
+    }
+    .info-container__section_big-font {
+      font-size: 22px;
+    }
+    .info-container__section_low-font {
+      font-size: 17px;
+    }
+    .separator {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    .about__container {
+      flex-direction: column-reverse;
+      max-height: none;
+    }
+    .about__descr {
+      width: 100%;
+    }
+    .about__title {
+      text-align: center;
+    }
+    .about__text {
+      text-align: center;
+    }
+    .first-line__link-item {
+      display: flex;
+      width: -webkit-fill-available;
+    }
+  }
+
   @keyframes ani {
   0% {transform: translateY(150%);opacity: 0;}
   100% {transform: translateY(0);opacity: 1;}

@@ -142,7 +142,7 @@ export default {
 </script>
 <style scoped>
   .card__wrapper {
-    margin: 30px auto;
+    margin: 0 auto;
     max-width: 600px;
     display: flex;
     box-shadow: 2px 2px 8px rgba(0,0,0, 0.3);
@@ -227,5 +227,10 @@ export default {
   }
   .card__next:hover {
     box-shadow: none;
+  } 
+  @media screen and (max-width: 420px) {
+    .card__info_blocks {
+      flex-direction: column;
+    }
   }
 </style>

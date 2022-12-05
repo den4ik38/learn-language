@@ -376,4 +376,16 @@ export default {
     width: 20px;
     height: 20px;
   }
+  @media screen and (max-width: 450px) {
+    .card__options {
+      min-width: 150px;
+    }
+    .card__option_picture {
+      width: 150px;
+      height: 150px;
+    }
+    .card__header {
+      height: auto;
+    }
+  }
 </style>

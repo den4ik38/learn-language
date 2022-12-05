@@ -89,4 +89,50 @@ export default {
     height: 40px;
     margin: 0 10px;
   }
+  @media screen and (max-width: 815px) {
+    .footer__social-container {
+      flex-direction: column;
+    }
+    .footer__social-icon {
+      width: 20px;
+      height: 20px;
+      margin-top: 10px;
+    }
+    .footer__container {
+      justify-content: space-around;
+    }
+  }
+  @media screen and (max-width: 615px) {
+    .footer__link-item {
+      margin-top: 0;
+    }
+    .main-line__section-logo-span {
+      max-width: 100px;
+    }
+    .footer__link {
+      font-size: 12px;
+    }
+    .footer__links-list {
+      margin: 5px 10px;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    .footer__links-section {
+      flex-direction: column;
+      justify-content: center;
+    }
+    .footer__logo-img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    .footer__logo-section {
+      flex-direction: column;
+    }
+    .main-line__section-logo-span {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+  }
 </style>

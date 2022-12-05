@@ -124,7 +124,7 @@ export default {
 
   .wrapper {
     padding-top: 30px;
-    min-height: calc(100vh - 140px);
+
   }
   .header {
     max-width: 800px;
@@ -171,6 +171,9 @@ export default {
   }
   .param {
     width: 30%;
+  }
+  .value {
+    padding-left: 20px;
   }
   .redactor__find-word {
     padding: 20px;
@@ -257,5 +260,25 @@ export default {
 .del__btn {
   cursor: pointer;
   font-weight: bold;
+}
+@media screen and (max-width: 500px) {
+  .param {
+    font-size: 14px;
+  }
+  .value {
+    font-size: 14px;
+  }
+  .redactor__find-word {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .redactor__input {
+    width: 100%;
+    margin: 10px auto;
+  }
+  .redactor__find-btn {
+    margin: 10px auto;
+  }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrapper">
     <ticket-item
     v-for="ticket in tickets" :key="ticket.id"
     :card="ticket"
@@ -29,6 +29,8 @@ export default {
   }
 }
 </script>
-<style>
-  
+<style scoped>
+.wrapper {
+  padding-top: 40px;
+}
 </style>

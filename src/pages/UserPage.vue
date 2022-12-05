@@ -14,7 +14,5 @@ import UserForm from '@/components/UserForm.vue';
 </script>
 
 <style scoped>
-.wrapper {
-  min-height: calc(100vh - 140px);
-}
+
 </style>

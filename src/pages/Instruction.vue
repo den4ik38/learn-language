@@ -29,7 +29,7 @@
           Для полноценного запоминания вам потребуется около одной минуты на изучение каждой карточки. 
         </div>
         <img src="../../public/polaroid-ticket.webp" alt="" class="photo">
-        <p>1. Прочтите слово, его транскрипцию и перевод. Если у вас существуют проблема с чтением транскрипции,
+        <p><br><br><br>1. Прочтите слово, его транскрипцию и перевод. Если у вас существуют проблема с чтением транскрипции,
             нажмите на "Произношение". Прослушайте произношение слова несколько раз, после каждого прослушивания, постарайтесь воспроизвести
             произношение максимально точно. Проговаривайте вслух, это очень важно.
         </p>
@@ -161,7 +161,7 @@ export default {
   .wrapper {
     width: 100%;
     margin: 0 auto;
-    min-height: calc(100vh - 140px);
+    overflow: hidden;
   }
   .first-line {
     width: 100%;
@@ -339,6 +339,42 @@ export default {
   width: -webkit-fill-available;
 }
 
+@media screen and (max-width:890px) {
+  .photo {
+    transform: none;
+  }
+  .photo_replace {
+    transform: translateX(-10px);
+  }
+}
+
+@media screen and (max-width:855px) {
+  .first-line__linked-list {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+}
+
+@media screen and (max-width: 800px) {
+    .info-container {
+      flex-direction: column;
+    }
+    .info-container__section_big-font {
+      font-size: 22px;
+    }
+    .info-container__section_low-font {
+      font-size: 17px;
+    }
+    .separator {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 420px) {
+    .photo {
+      width: 300px;
+      height: 400px;
+    }
+  }
 @keyframes born {
   0%{opacity: 0;}
   100%{opacity: 1;}

@@ -170,9 +170,7 @@ import TestList from '@/components/TestList.vue'
 </script>
 
 <style scoped>
-.wrapper {
-  min-height: calc(100vh - 140px);
-}
+
   .btn__wrapper {
     max-width: 800px;
     margin: 15px auto;
@@ -186,5 +184,11 @@ import TestList from '@/components/TestList.vue'
     margin: 0 10px;
     cursor: pointer;
     box-shadow: 0 0 6px grey;
+  }
+  @media screen and (max-width: 540px) {
+    .btn__wrapper {
+      display: flex;
+      flex-wrap: wrap;
+    }
   }
 </style>

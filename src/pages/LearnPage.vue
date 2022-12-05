@@ -85,7 +85,7 @@ import TicketList from '@/components/TicketList.vue'
 
 <style scoped>
 .wrapper {
-  min-height: calc(100vh - 140px);
+  padding: 10px;
 }
   .message {
     margin: 20px auto;

@@ -137,7 +137,7 @@ export default {
   }
   input {
     margin: 20px;
-    padding: 5px 0;
+    padding: 5px 5px;
   }
   select {
     margin: 20px;
@@ -185,5 +185,12 @@ export default {
     margin: 5px;
     background-size: contain;
     background-repeat: no-repeat;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .form {
+      width: auto;
+      padding: 10px;
+    }
   }
 </style>

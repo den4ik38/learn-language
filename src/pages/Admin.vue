@@ -99,7 +99,6 @@ export default {
     width: 100%;
     display: flex;
     margin: 0 auto;
-    min-height: calc(100vh - 140px);
     padding-bottom: 20px;
   }
   .left-menu {
@@ -197,5 +196,41 @@ export default {
     cursor: pointer;
     margin-top: 6px;
   }
+  @media screen and (max-width: 1024px) {
+    .wrapper {
+      flex-direction: column;
+    }
+    .left-menu {
+      display: flex;
+    }
+    .content {
+      padding: 10px;
+    }
+  }
 
+  @media screen and (max-width: 540px) {
+    .users__find-form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .users__finf-form-select {
+      padding: 5px;
+      width: 100%;
+      margin: 10px auto;
+    }
+    .users__find-form-input {
+      padding: 5px;
+      width: 100%;
+      margin: 10px auto;
+    }
+    .redactor__find-word {
+      display: flex;
+    }
+  }
+@media screen and (max-width: 420px) {
+  .menu-item {
+    font-size: 12px;
+  }
+}
 </style>
